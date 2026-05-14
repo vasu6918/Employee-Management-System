@@ -1,18 +1,34 @@
 # Employee Management System
 
-A Python-based Employee Management System.
+A simple Python-based Employee Management System using functions and JSON file handling.
 
 ## Features
-- Add employee records
-- View all employees
-- Search employee by ID
-- Remove employee records
-- Menu-driven interface
+
+- Add Employee
+- View Employees
+- Search Employee
+- Update Employee
+- Remove Employee
+- JSON data storage
+- Input validation using try-except
+
+## Technologies Used
+
+- Python
+- JSON
 
 ## Concepts Used
+
 - Functions
 - Lists
 - Dictionaries
 - Loops
 - Conditional Statements
-- Data Handling
+- Exception Handling
+- File Handling
+
+## How to Run
+
+```bash
+python employee_management.py
+```
