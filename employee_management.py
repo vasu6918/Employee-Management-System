@@ -1,11 +1,39 @@
-employees = []
+import json
+
+FILE_NAME = "employees.json"
+
+
+def load_employees():
+
+    try:
+        with open(FILE_NAME, "r") as file:
+            return json.load(file)
+
+    except FileNotFoundError:
+        return []
+
+
+def save_employees():
+
+    with open(FILE_NAME, "w") as file:
+        json.dump(employees, file, indent=4)
+
+
+employees = load_employees()
+
 
 def add_employee():
 
     emp_id = input("Enter Employee ID: ")
     name = input("Enter Employee Name: ")
     department = input("Enter Department: ")
-    salary = float(input("Enter Salary: "))
+
+    try:
+        salary = float(input("Enter Salary: "))
+
+    except ValueError:
+        print("\nInvalid salary input.")
+        return
 
     employee = {
         "id": emp_id,
@@ -15,6 +43,7 @@ def add_employee():
     }
 
     employees.append(employee)
+    save_employees()
 
     print("\nEmployee added successfully!")
 
@@ -60,6 +89,32 @@ def search_employee():
         print("\nEmployee not found.")
 
 
+def update_employee():
+
+    emp_id = input("Enter Employee ID to update: ")
+
+    for emp in employees:
+
+        if emp["id"] == emp_id:
+
+            emp["name"] = input("Enter New Name: ")
+            emp["department"] = input("Enter New Department: ")
+
+            try:
+                emp["salary"] = float(input("Enter New Salary: "))
+
+            except ValueError:
+                print("\nInvalid salary input.")
+                return
+
+            save_employees()
+
+            print("\nEmployee updated successfully!")
+            return
+
+    print("\nEmployee not found.")
+
+
 def remove_employee():
 
     emp_id = input("Enter Employee ID to remove: ")
@@ -67,7 +122,10 @@ def remove_employee():
     for emp in employees:
 
         if emp["id"] == emp_id:
+
             employees.remove(emp)
+            save_employees()
+
             print("\nEmployee removed successfully!")
             return
 
@@ -83,8 +141,9 @@ while True:
     print("1. Add Employee")
     print("2. View Employees")
     print("3. Search Employee")
-    print("4. Remove Employee")
-    print("5. Exit")
+    print("4. Update Employee")
+    print("5. Remove Employee")
+    print("6. Exit")
 
     choice = input("\nEnter your choice: ")
 
@@ -98,9 +157,12 @@ while True:
         search_employee()
 
     elif choice == "4":
-        remove_employee()
+        update_employee()
 
     elif choice == "5":
+        remove_employee()
+
+    elif choice == "6":
         print("\nExiting system...")
         break
 

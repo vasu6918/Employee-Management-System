@@ -1,0 +1,26 @@
+[
+    {
+        "id": "E01",
+        "name": "vanitha",
+        "department": "Developer",
+        "salary": 60000.0
+    },
+    {
+        "id": "E02",
+        "name": "arun",
+        "department": "HR",
+        "salary": 50000.0
+    },
+    {
+        "id": "E03",
+        "name": "vasu k",
+        "department": "UI/UX",
+        "salary": 50000.0
+    },
+    {
+        "id": "E04",
+        "name": "rithu",
+        "department": "IT",
+        "salary": 40000.0
+    }
+]
